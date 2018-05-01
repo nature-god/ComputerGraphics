@@ -103,17 +103,20 @@ public class Bresenham2D : MonoBehaviour {
 
     #region 画线
     public void DrawLine () {
-        dx = EndPos.x - StartPos.x;
-        dy = EndPos.y - StartPos.y;
-        k =  (float)dy / (float)dx;
+        Debug.Log("Start X:" + StartPos.x + "Start Y:" + StartPos.y);
+        Debug.Log("End X:" + EndPos.x + "End Y:" + EndPos.y);
 
-        if(EndPos.x < StartPos.x)
+
+        if (EndPos.x < StartPos.x)
         {
             Node2D temp = new Node2D(0, 0);
             temp = EndPos;
             EndPos = StartPos;
             StartPos = temp;
         }
+        dx = EndPos.x - StartPos.x;
+        dy = EndPos.y - StartPos.y;
+        k = (float)dy / (float)dx;
 
         currentNode = new Node2D(StartPos.x, StartPos.y);
         Debug.Log("K = "+k);

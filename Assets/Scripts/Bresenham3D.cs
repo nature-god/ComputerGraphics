@@ -138,12 +138,6 @@ public class Bresenham3D : MonoBehaviour {
     #region 画线
     public void DrawLine()
     {
-        dx = EndPos.x - StartPos.x;
-        dy = EndPos.y - StartPos.y;
-        dz = EndPos.z - StartPos.z;
-        k1 = (float)dy / (float)dx;
-        k2 = (float)dz / (float)dy;
-
         if (EndPos.x < StartPos.x )
         {
             Node3D temp = new Node3D(0, 0, 0);
@@ -151,6 +145,12 @@ public class Bresenham3D : MonoBehaviour {
             EndPos = StartPos;
             StartPos = temp;
         }
+
+        dx = EndPos.x - StartPos.x;
+        dy = EndPos.y - StartPos.y;
+        dz = EndPos.z - StartPos.z;
+        k1 = (float)dy / (float)dx;
+        k2 = (float)dz / (float)dy;
 
         currentNode = new Node3D(StartPos.x, StartPos.y,StartPos.z);
         Instantiate(_cube, new Vector3(currentNode.x, currentNode.y, currentNode.z), Quaternion.Euler(new Vector3(0, 0, 0)));
